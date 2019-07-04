@@ -22,13 +22,16 @@ class LogicGame
   end
 
   def conversion_array(arr_line)
+    array_name = []
     array_values = []
 
     arr_line.each do |readl|
       arr_new = readl.chomp.split(' ')
-      array_values << arr_new
+      array_name << arr_new.first
+      array_values << arr_new.last.to_i
     end
-    comparison_results(array_values)
+    array = array_name.zip(array_values)
+    comparison_results(array)
   end
 
   def arg_m(argums)
@@ -54,10 +57,10 @@ class LogicGame
     else
       arg_eq(argums)
     end
-    qqq(argums)
+    create_hash(argums)
   end
 
-  def qqq(arg)
+  def create_hash(arg)
     arg.each do |i|
       @arr << Hash[*i]
     end
