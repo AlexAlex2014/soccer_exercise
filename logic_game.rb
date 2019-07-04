@@ -31,16 +31,28 @@ class LogicGame
     comparison_results(array_values)
   end
 
+  def arg_m(argums)
+    argums.first[1] = 3
+    argums.last[1] = 0
+  end
+
+  def arg_l(argums)
+    argums.first[1] = 0
+    argums.last[1] = 3
+  end
+
+  def arg_eq(argums)
+    argums.first[1] = 1
+    argums.last[1] = 1
+  end
+
   def comparison_results(argums)
     if argums.first[1] > argums.last[1]
-      argums.first[1] = 3
-      argums.last[1] = 0
+      arg_m(argums)
     elsif argums.first[1] < argums.last[1]
-      argums.first[1] = 0
-      argums.last[1] = 3
+      arg_l(argums)
     else
-      argums.first[1] = 1
-      argums.last[1] = 1
+      arg_eq(argums)
     end
     qqq(argums)
   end
