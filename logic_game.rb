@@ -2,9 +2,16 @@
 
 # Create logic game
 class LogicGame
+  include ResultGames
   attr_reader :arr_result
   def initialize(arr_result)
     @arr_result = arr_result
+    @arr = []
+  end
+
+  def run
+    read_line
+    sorting_result
   end
 
   def read_line
@@ -19,31 +26,28 @@ class LogicGame
 
     arr_line.each do |readl|
       arr_new = readl.chomp.split(' ')
-      array_values << arr_new.first
-      array_values << arr_new.last.to_i
+      array_values << arr_new
     end
-    create_hash(array_values)
-  end
-
-  def create_hash(arr_convert)
-    create_hash = Hash[*arr_convert]
-    comparison_results(create_hash)
+    comparison_results(array_values)
   end
 
   def comparison_results(argums)
-    value = argums.to_a
-    if value.first[1] > value.last[1]
-      value.first[1] = 3
-      value.last[1] = 0
-    elsif value.first[1] < value.last[1]
-      value.first[1] = 0
-      value.last[1] = 3
+    if argums.first[1] > argums.last[1]
+      argums.first[1] = 3
+      argums.last[1] = 0
+    elsif argums.first[1] < argums.last[1]
+      argums.first[1] = 0
+      argums.last[1] = 3
     else
-      value.first[1] = 1
-      value.last[1] = 1
+      argums.first[1] = 1
+      argums.last[1] = 1
     end
-    value.each do |i|
-      ResultGames.counted_points(Hash[*i])
+    qqq(argums)
+  end
+
+  def qqq(arg)
+    arg.each do |i|
+      @arr << Hash[*i]
     end
   end
 end
