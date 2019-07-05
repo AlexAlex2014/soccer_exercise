@@ -9,7 +9,7 @@ module ResultGames
     sorting_a = counting_points.sort
     sorting_rating = sorting_a.sort { |a, b| b[1] <=> a[1] }
     sorting_rating.each_with_index do |k, v|
-      puts "#{(v + 1)}. #{k.join(' ')} pts"
+      puts "#{(v + 1)}. #{k.join(' ')} #{declination(k[1])}"
     end
     # sorting_rating.each { |key, value| puts ". #{key}, #{value} pts" }
   end

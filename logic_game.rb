@@ -3,6 +3,8 @@
 # Create logic game
 class LogicGame
   include ResultGames
+  include WordDeclination
+
   attr_reader :arr_result
   def initialize(arr_result)
     @arr_result = arr_result
